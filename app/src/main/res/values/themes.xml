@@ -1,7 +1,19 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Obugame" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
+    <style name="Base.Theme.Obugame" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/kuning</item>
+        <item name="colorPrimaryVariant">@color/coklat</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+
+        <!-- Secoundary brand color.. -->
+        <item name="colorSecondary">@color/kuning</item>
+        <item name="colorSecondaryVariant">@color/coklat</item>
+        <item name="colorOnSecondary">@color/black</item>
+
+        <!-- Status Bar color.. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 

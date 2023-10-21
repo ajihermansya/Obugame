@@ -9,4 +9,5 @@
     <string name="masukan_berat_bahan_baku">masukan berat bahan baku</string>
     <string name="harga_kemasan_buah">Harga Kemasan (/buah)</string>
     <string name="rupiah">Rp.</string>
+    <string name="hitung_eoq">Hitung EOQ</string>
 </resources>
