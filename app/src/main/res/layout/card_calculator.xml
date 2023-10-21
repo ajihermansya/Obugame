@@ -96,7 +96,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:inputType="numberDecimal"
-                        android:hint="@string/masukan_berat_bahan_baku"
+                        android:hint="@string/masukan_jumlah_kemasan"
                         android:background="@drawable/input_border"
                         android:drawablePadding="8dp"
                         android:padding="10dp" />
@@ -137,7 +137,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:inputType="numberDecimal"
-                            android:hint="@string/masukan_berat_bahan_baku"
+                            android:hint="@string/masukkan_harga_kemasan"
                             android:background="@drawable/input_border"
                             android:drawablePadding="8dp"
                             android:padding="10dp"/>
