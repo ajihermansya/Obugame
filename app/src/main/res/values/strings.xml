@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Obugame</string>
     <string name="obugame">OBUGAME</string>
+    <string name="welcome_user">Welcome User</string>
 </resources>
