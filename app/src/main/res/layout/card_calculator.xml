@@ -146,13 +146,52 @@
 
                 </LinearLayout>
 
-                <Button
-                    android:layout_width="wrap_content"
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/shape_rectangel_coklat"
-                    android:text="@string/hitung_eoq"
-                    android:textColor="@color/white"
-                    android:paddingTop="20dp"/>
+                    android:orientation="horizontal"
+                    android:paddingStart="10dp"
+                    android:paddingBottom="20dp">
+
+                    <Button
+                        android:id="@+id/button_hitung"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="5dp"
+                        android:background="@drawable/shape_rectangel_coklat"
+                        android:textAllCaps="false"
+                        android:text="@string/hitung_eoq"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        app:cornerRadius="30dp" />
+
+                    <Button
+                        android:id="@+id/button_riwayat"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="5dp"
+                        android:background="@drawable/shape_rectangel_putih"
+                        android:textAllCaps="false"
+                        android:text="@string/riwayat"
+                        android:textColor="@color/coklat"
+                        android:textSize="18sp"
+                        app:cornerRadius="0dp" />
+
+
+                    <ImageView
+                        android:id="@+id/button_save"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.1"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="15dp"
+                        android:background="@drawable/icon_save"
+                        android:textAllCaps="false"
+                        app:cornerRadius="0dp" />
+                </LinearLayout>
 
 
             </LinearLayout>
