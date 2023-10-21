@@ -2,4 +2,11 @@
     <string name="app_name">Obugame</string>
     <string name="obugame">OBUGAME</string>
     <string name="welcome_user">Welcome User</string>
+    <string name="eoq_string">EOQ (Economic Order Quantity)</string>
+    <string name="jumlah_bahan_baku">Jumlah Bahan Baku</string>
+    <string name="satuan_kg">Kg</string>
+    <string name="jumlah_kemasan_terpakai">Jumlah Kemasan Terpakai</string>
+    <string name="masukan_berat_bahan_baku">masukan berat bahan baku</string>
+    <string name="harga_kemasan_buah">Harga Kemasan (/buah)</string>
+    <string name="rupiah">Rp.</string>
 </resources>
