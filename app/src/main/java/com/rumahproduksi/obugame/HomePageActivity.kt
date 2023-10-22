@@ -24,6 +24,9 @@ class HomePageActivity : AppCompatActivity() {
         }
 
 
+
+
+
         val fragments = mutableListOf<Fragment>(
             BahanBakuFragment(),
             BahanLainnyaFragment(),
@@ -32,7 +35,6 @@ class HomePageActivity : AppCompatActivity() {
         val titleFragments = mutableListOf(
             getString(R.string.bahanbaku), getString(R.string.bahanlainnya), getString(R.string.biayalainnya)
         )
-
 
         val adapter = DetailAdapter(this, fragments)
         binding.viewpager.adapter = adapter
