@@ -144,6 +144,18 @@
 
                     </LinearLayout>
 
+                    <EditText
+                        android:id="@+id/hasil_eoq"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginTop="10dp"
+                        android:inputType="numberDecimal"
+                        android:hint="@string/hasil_perhitungan"
+                        android:background="@drawable/input_border"
+                        android:drawablePadding="8dp"
+                        android:padding="10dp" />
+
                 </LinearLayout>
 
 
