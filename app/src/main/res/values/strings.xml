@@ -19,5 +19,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hasil_perhitungan">Hasil Perhitungan</string>
+    <string name="simpan">Simpan</string>
+    <string name="pisang_kepok">Pisang Kepok</string>
+    <string name="jumlah_stok">Jumlah Stok :</string>
+    <string name="value_tandan">5</string>
+    <string name="tandan">tandan</string>
 
 </resources>

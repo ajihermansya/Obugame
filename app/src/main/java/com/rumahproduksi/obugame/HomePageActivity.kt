@@ -36,10 +36,8 @@ class HomePageActivity : AppCompatActivity() {
         val titleFragments = mutableListOf(
             getString(R.string.bahanbaku), getString(R.string.bahanlainnya), getString(R.string.biayalainnya)
         )
-
         val adapter = DetailAdapter(this, fragments)
         binding.viewpager.adapter = adapter
-
         TabLayoutMediator(binding.tab,binding.viewpager) { tab, posisi ->
             tab.text = titleFragments[posisi]
         }.attach()

@@ -4,4 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="kuning">#FCCE2F</color>
     <color name="coklat">#B45A04</color>
+    <color name="kuningblur">#80FCCE2F</color>
+
 </resources>
