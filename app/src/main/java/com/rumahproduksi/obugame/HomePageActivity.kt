@@ -1,5 +1,4 @@
 package com.rumahproduksi.obugame
-
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.ActionBar
@@ -22,10 +21,6 @@ class HomePageActivity : AppCompatActivity() {
         if (actionBar != null) {
             actionBar.hide()
         }
-
-
-
-
 
         val fragments = mutableListOf<Fragment>(
             BahanBakuFragment(),
