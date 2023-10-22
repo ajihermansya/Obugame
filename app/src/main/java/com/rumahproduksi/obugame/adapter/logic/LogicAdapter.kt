@@ -1,4 +1,4 @@
-package com.rumahproduksi.obugame.adapter
+package com.rumahproduksi.obugame.adapter.logic
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

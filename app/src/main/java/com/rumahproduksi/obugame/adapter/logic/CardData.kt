@@ -1,4 +1,4 @@
-package com.rumahproduksi.obugame.adapter
+package com.rumahproduksi.obugame.adapter.logic
 
 data class CardData(
     val bahanBaku: Double,

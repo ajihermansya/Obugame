@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -35,29 +37,36 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <include
-        android:id="@+id/card_image"
-        android:layout_below="@id/toolbar"
-        layout="@layout/card_calculator"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_below="@id/card_image"
-        android:textAllCaps="false"
-        app:tabBackground="@drawable/background_fragment" />
+        android:layout_below="@id/toolbar">
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewpager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_below="@id/tab"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+            <include
+                android:id="@+id/card_image"
+                layout="@layout/card_calculator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/card_image"
+                android:textAllCaps="false"
+                app:tabBackground="@drawable/background_fragment" />
 
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_below="@id/tab"/>
+
+        </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>
