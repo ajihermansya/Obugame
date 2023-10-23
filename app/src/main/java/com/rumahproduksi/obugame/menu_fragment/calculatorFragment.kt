@@ -1,5 +1,4 @@
 package com.rumahproduksi.obugame.menu_fragment
-
 import android.app.DatePickerDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -33,8 +32,10 @@ class calculatorFragment : Fragment() {
             val datePickerDialog = DatePickerDialog(
                 requireContext(),
                 { _, selectedYear, selectedMonth, selectedDay ->
-                    // Ketika pengguna memilih tanggal, Anda dapat melakukan sesuatu dengan tanggal yang dipilih di sini.
-                    val selectedDate = "$selectedYear-${selectedMonth + 1}-$selectedDay"
+                    // Mengonversi bulan ke format 2 digit (01, 02, 03, dll.)
+                    val formattedMonth = if (selectedMonth + 1 < 10) "0${selectedMonth + 1}" else (selectedMonth + 1).toString()
+                    // Menggabungkan tanggal, bulan, dan tahun dalam format "tanggal bulan tahun"
+                    val selectedDate = "$selectedDay-$formattedMonth-$selectedYear"
                     inputTanggal.setText(selectedDate)
                 },
                 year, month, day
@@ -42,6 +43,7 @@ class calculatorFragment : Fragment() {
 
             datePickerDialog.show()
         }
+
 
 
 
