@@ -26,8 +26,6 @@ class LogicAdapter(private val dataList: List<CardData>) :
         holder.binding.inputKemasanterpakai.setText(data.kemasanTerpakai.toString())
         holder.binding.inputHargakemasan.setText(data.hargaKemasan.toString())
 
-
-
         // Set click listeners and other logic for buttons here
         holder.binding.hitungEoq.setOnClickListener {
             // Handle the logic for the "Hitung" button
@@ -35,10 +33,6 @@ class LogicAdapter(private val dataList: List<CardData>) :
 
         holder.binding.buttonRiwayat.setOnClickListener {
             // Handle the logic for the "Riwayat" button
-        }
-
-        holder.binding.buttonSave.setOnClickListener {
-            // Handle the logic for the "Save" button
         }
 
 

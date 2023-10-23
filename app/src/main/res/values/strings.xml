@@ -12,7 +12,7 @@
     <string name="hitung_eoq">Hitung EOQ</string>
     <string name="riwayat">Riwayat</string>
     <string name="masukan_jumlah_kemasan">masukan jumlah kemasan</string>
-    <string name="masukkan_harga_kemasan">masukkan harga kemasan</string>
+    <string name="masukkan_harga_kemasan">harga kemasan</string>
     <string name="bahanlainnya">Bahan Lainnya</string>
     <string name="biayalainnya">Biaya Lainnya</string>
     <string name="bahanbaku">Bahan Baku</string>
@@ -24,5 +24,6 @@
     <string name="jumlah_stok">Jumlah Stok :</string>
     <string name="value_tandan">5</string>
     <string name="tandan">tandan</string>
+    <string name="tanggal">tanggal</string>
 
 </resources>
