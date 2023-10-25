@@ -9,9 +9,9 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.rumahproduksi.obugame.R
 import com.rumahproduksi.obugame.adapter.DetailAdapter
 import com.rumahproduksi.obugame.databinding.FragmentNotedBinding
-import com.rumahproduksi.obugame.fragmenactivity.BahanBakuFragment
-import com.rumahproduksi.obugame.fragmenactivity.BahanLainnyaFragment
-import com.rumahproduksi.obugame.fragmenactivity.BiayaLainFragment
+import com.rumahproduksi.obugame.activity_fragmen.BahanBakuFragment
+import com.rumahproduksi.obugame.activity_fragmen.BahanLainnyaFragment
+import com.rumahproduksi.obugame.activity_fragmen.BiayaLainFragment
 
 
 class NotedFragment : Fragment() {

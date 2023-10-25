@@ -27,5 +27,13 @@
     <string name="tanggal">tanggal</string>
     <string name="keterangan">Keterangan :</string>
     <string name="status">Masukkan angka untuk melihat hasil</string>
+    <string name="kg">/kg</string>
+    <string name="buah">/buah</string>
+    <string name="kemasan_terpakai">Jumlah Kemasan Terpakai :</string>
+    <string name="biaya_pesan_rp">Biaya Pesan : Rp.</string>
+    <string name="bahan_baku">Jumlah Bahan Baku :</string>
+    <string name="tanggal_">26/10/2023</string>
+    <string name="hasil_eoq">700</string>
+    <string name="string_hasil_eoq">Hasil EOQ =</string>
 
 </resources>

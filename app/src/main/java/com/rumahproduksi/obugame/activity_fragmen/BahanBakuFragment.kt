@@ -1,4 +1,4 @@
-package com.rumahproduksi.obugame.fragmenactivity
+package com.rumahproduksi.obugame.activity_fragmen
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
