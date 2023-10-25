@@ -1,4 +1,4 @@
-package com.rumahproduksi.obugame.model
+package com.rumahproduksi.obugame.adapter.dataclass_model
 
 data class BahanBaku(
     val jenispisang : String?="",

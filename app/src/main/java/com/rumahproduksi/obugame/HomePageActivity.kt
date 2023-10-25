@@ -1,20 +1,12 @@
 package com.rumahproduksi.obugame
 import android.app.ActivityOptions
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.tabs.TabLayoutMediator
-import com.rumahproduksi.obugame.adapter.logic.adapter_fragment.DetailAdapter
 import com.rumahproduksi.obugame.databinding.ActivityHomePageBinding
-import com.rumahproduksi.obugame.fragmenactivity.BahanBakuFragment
-import com.rumahproduksi.obugame.fragmenactivity.BahanLainnyaFragment
-import com.rumahproduksi.obugame.fragmenactivity.BiayaLainFragment
 import com.rumahproduksi.obugame.menu_fragment.NotedFragment
 import com.rumahproduksi.obugame.menu_fragment.calculatorFragment
 

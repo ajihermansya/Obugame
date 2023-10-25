@@ -10,7 +10,7 @@ import android.widget.Toast
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.rumahproduksi.obugame.databinding.FragmentAddBahanBakuBinding
-import com.rumahproduksi.obugame.model.BahanBaku
+import com.rumahproduksi.obugame.adapter.dataclass_model.BahanBaku
 
 class AddBahanBakuFragment : Fragment() {
     lateinit var binding: FragmentAddBahanBakuBinding

@@ -4,12 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
-import com.rumahproduksi.obugame.adapter.logic.adapter_fragment.DetailAdapter
-import com.rumahproduksi.obugame.databinding.ActivityHomePageBinding
+import com.rumahproduksi.obugame.adapter.DetailAdapter
 import com.rumahproduksi.obugame.databinding.ActivitySettingBinding
-import com.rumahproduksi.obugame.fragmenactivity.BahanBakuFragment
-import com.rumahproduksi.obugame.fragmenactivity.BahanLainnyaFragment
-import com.rumahproduksi.obugame.fragmenactivity.BiayaLainFragment
 import com.rumahproduksi.obugame.fragment_setting.AddBahanBakuFragment
 import com.rumahproduksi.obugame.fragment_setting.AddBahanLainnyaFragment
 import com.rumahproduksi.obugame.fragment_setting.AddBiayaLainnyaFragment

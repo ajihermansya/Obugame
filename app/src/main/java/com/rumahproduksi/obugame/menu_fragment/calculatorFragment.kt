@@ -11,6 +11,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.rumahproduksi.obugame.R
 import com.rumahproduksi.obugame.SettingActivity
 import com.rumahproduksi.obugame.adapter.logic.EOQCalculatorAdapter
@@ -22,6 +24,7 @@ import kotlin.math.round
 class calculatorFragment : Fragment() {
     lateinit var binding: FragmentCalculatorBinding
     private val eoqCalculatorAdapter = EOQCalculatorAdapter()
+    private lateinit var mDbRef: DatabaseReference
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,6 +49,7 @@ class calculatorFragment : Fragment() {
             showDatePicker(inputTanggal)
         }
 
+        mDbRef = FirebaseDatabase.getInstance().reference.child("hasil_perhitungan")
         hitungEoqButton.setOnClickListener {
             val beratBahan = inputBahanBaku.text.toString().toFloatOrNull()
             val jumlahKemasan = inputKemasanTerpakai.text.toString().toIntOrNull()
@@ -67,6 +71,8 @@ class calculatorFragment : Fragment() {
                 status.text = "Semua input harus diisi"
                 Toast.makeText(context, "Semua Inputan Harus Terisi", Toast.LENGTH_SHORT).show()
             }
+
+
         }
 
 
@@ -99,4 +105,12 @@ class calculatorFragment : Fragment() {
         val dateFormat = SimpleDateFormat("dd-MM-yyyy")
         return dateFormat.format(calendar.time)
     }
+
+
+
+
 }
+
+
+
+

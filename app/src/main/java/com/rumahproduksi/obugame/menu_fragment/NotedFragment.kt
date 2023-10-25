@@ -5,10 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import com.google.android.material.tabs.TabLayoutMediator
 import com.rumahproduksi.obugame.R
-import com.rumahproduksi.obugame.adapter.logic.adapter_fragment.DetailAdapter
+import com.rumahproduksi.obugame.adapter.DetailAdapter
 import com.rumahproduksi.obugame.databinding.FragmentNotedBinding
 import com.rumahproduksi.obugame.fragmenactivity.BahanBakuFragment
 import com.rumahproduksi.obugame.fragmenactivity.BahanLainnyaFragment
