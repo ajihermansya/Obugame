@@ -3,7 +3,6 @@ package com.rumahproduksi.obugame.menu_fragment
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,14 +14,12 @@ import android.widget.Toast
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.rumahproduksi.obugame.R
-import com.rumahproduksi.obugame.SettingActivity
-import com.rumahproduksi.obugame.adapter.dataclass_model.BahanBaku
+import com.rumahproduksi.obugame.page_activity.SettingActivity
 import com.rumahproduksi.obugame.adapter.dataclass_model.CalculatorModel
 import com.rumahproduksi.obugame.adapter.logic.EOQCalculatorAdapter
 import com.rumahproduksi.obugame.databinding.FragmentCalculatorBinding
 import java.text.SimpleDateFormat
 import java.util.Calendar
-import kotlin.math.round
 
 class calculatorFragment : Fragment() {
     lateinit var binding: FragmentCalculatorBinding

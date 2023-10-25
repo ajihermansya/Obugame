@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/kuning"
-    tools:context=".HomePageActivity">
+    tools:context=".page_activity.HomePageActivity">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/BottomNavMenu"

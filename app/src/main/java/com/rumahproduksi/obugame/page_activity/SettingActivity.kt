@@ -1,14 +1,15 @@
-package com.rumahproduksi.obugame
+package com.rumahproduksi.obugame.page_activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
+import com.rumahproduksi.obugame.R
 import com.rumahproduksi.obugame.adapter.DetailAdapter
 import com.rumahproduksi.obugame.databinding.ActivitySettingBinding
-import com.rumahproduksi.obugame.fragment_setting.AddBahanBakuFragment
-import com.rumahproduksi.obugame.fragment_setting.AddBahanLainnyaFragment
-import com.rumahproduksi.obugame.fragment_setting.AddBiayaLainnyaFragment
+import com.rumahproduksi.obugame.tambahdata_fragment.AddBahanBakuFragment
+import com.rumahproduksi.obugame.tambahdata_fragment.AddBahanLainnyaFragment
+import com.rumahproduksi.obugame.tambahdata_fragment.AddBiayaLainnyaFragment
 
 class SettingActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySettingBinding

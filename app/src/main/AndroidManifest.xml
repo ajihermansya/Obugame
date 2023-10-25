@@ -16,14 +16,14 @@
         android:theme="@style/Theme.Obugame"
         tools:targetApi="31">
         <activity
-            android:name=".CalculatorActivity"
+            android:name=".page_activity.HistoryActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingActivity"
+            android:name=".page_activity.SettingActivity"
             android:exported="false"
             android:label="Tambah Data" />
         <activity
-            android:name=".HomePageActivity"
+            android:name=".page_activity.HomePageActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,24 +32,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".page_activity.SplashScreenActivity"
             android:exported="false">
-
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="false">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>

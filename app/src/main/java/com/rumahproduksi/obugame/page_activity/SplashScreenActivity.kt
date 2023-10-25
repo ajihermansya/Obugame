@@ -1,9 +1,10 @@
-package com.rumahproduksi.obugame
+package com.rumahproduksi.obugame.page_activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import com.rumahproduksi.obugame.R
 
 class SplashScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

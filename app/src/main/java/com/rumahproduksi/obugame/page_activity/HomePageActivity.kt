@@ -1,4 +1,4 @@
-package com.rumahproduksi.obugame
+package com.rumahproduksi.obugame.page_activity
 import android.app.ActivityOptions
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.rumahproduksi.obugame.R
 import com.rumahproduksi.obugame.databinding.ActivityHomePageBinding
 import com.rumahproduksi.obugame.menu_fragment.NotedFragment
 import com.rumahproduksi.obugame.menu_fragment.calculatorFragment
@@ -29,13 +30,19 @@ class HomePageActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.calculet -> {
                     replaceFragment(calculatorFragment())
-                    val options = ActivityOptions.makeCustomAnimation(this, R.anim.slide_in_right, R.anim.slide_out_left)
+                    val options = ActivityOptions.makeCustomAnimation(this,
+                        R.anim.slide_in_right,
+                        R.anim.slide_out_left
+                    )
                     startActivity(intent, options.toBundle())
                     true
                 }
                 R.id.noted -> {
                     replaceFragment(NotedFragment())
-                    val options = ActivityOptions.makeCustomAnimation(this, R.anim.slide_in_right, R.anim.slide_out_left)
+                    val options = ActivityOptions.makeCustomAnimation(this,
+                        R.anim.slide_in_right,
+                        R.anim.slide_out_left
+                    )
                     startActivity(intent, options.toBundle())
                     true
                 }
