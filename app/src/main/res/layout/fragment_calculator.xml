@@ -36,7 +36,7 @@
     </androidx.appcompat.widget.Toolbar>
 
     <include
-        android:id="@+id/card_image"
+        android:id="@+id/recyclerView"
         android:layout_below="@id/toolbar"
         layout="@layout/card_calculator"
         android:layout_width="match_parent"

@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.rumahproduksi.obugame.databinding.FragmentAddBahanBakuBinding
+import com.rumahproduksi.obugame.model.BahanBaku
 
 class AddBahanBakuFragment : Fragment() {
     lateinit var binding: FragmentAddBahanBakuBinding
@@ -24,31 +25,26 @@ class AddBahanBakuFragment : Fragment() {
 
         binding.buttonSave.setOnClickListener {
             val jenispisang = binding.jenisPisang.text.toString()
-            val beratBahanText = binding.inputBahanbaku.text.toString()
-
-            if (TextUtils.isEmpty(jenispisang) || TextUtils.isEmpty(beratBahanText)) {
-                Toast.makeText(context, "Isi semua kolom terlebih dahulu.", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-
-            try {
-                val beratBahan = beratBahanText.toDouble()
-
-                // Buat objek untuk data yang akan disimpan ke Firebase
-                val dataBahanBaku = HashMap<String, Any>()
-                dataBahanBaku["jenisPisang"] = jenispisang
-                dataBahanBaku["beratBahan"] = beratBahan
-
-                //Menambahkan data ke Firebase
-                val newBahanBakuRef = mDbRef.push()
-                newBahanBakuRef.setValue(dataBahanBaku)
-
-                Toast.makeText(context, "Data berhasil ditambahkan ke Firebase", Toast.LENGTH_SHORT).show()
-            } catch (e: NumberFormatException) {
-                Toast.makeText(context, "Masukkan berat bahan tidak valid. Harap masukkan angka yang benar.", Toast.LENGTH_SHORT).show()
-            }
+            val beratBahan = binding.inputBahanbaku.text.toString()
+           tambahdata(jenispisang, beratBahan)
         }
 
         return binding.root
+    }
+
+    private fun tambahdata(jenispisang : String, beratBahan : String){
+        if (TextUtils.isEmpty(jenispisang) || TextUtils.isEmpty(beratBahan)) {
+            Toast.makeText(context, "Isi semua kolom terlebih dahulu.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        try {
+            //Menambahkan data ke Firebase
+            val newBahanBakuRef = mDbRef.push()
+            newBahanBakuRef.setValue(BahanBaku(jenispisang, beratBahan))
+            Toast.makeText(context, "Data berhasil ditambahkan ke Firebase", Toast.LENGTH_SHORT).show()
+        } catch (e: NumberFormatException) {
+            Toast.makeText(context, "Masukkan berat bahan tidak valid. Harap masukkan angka yang benar.", Toast.LENGTH_SHORT).show()
+        }
     }
 }
