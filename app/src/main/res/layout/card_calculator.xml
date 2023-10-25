@@ -166,7 +166,7 @@
 
                         </LinearLayout>
 
-                        <EditText
+                        <TextView
                             android:id="@+id/hasil_eoq"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"

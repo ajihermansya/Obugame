@@ -26,6 +26,6 @@
     <string name="tandan">tandan</string>
     <string name="tanggal">tanggal</string>
     <string name="keterangan">Keterangan :</string>
-    <string name="status">Hasil Eoq Anda kurang dalam standarisasi sebesar 29</string>
+    <string name="status">Masukkan angka untuk melihat hasil</string>
 
 </resources>

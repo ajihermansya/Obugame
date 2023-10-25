@@ -9,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
 import com.rumahproduksi.obugame.R
 import com.rumahproduksi.obugame.SettingActivity
 import com.rumahproduksi.obugame.adapter.logic.EOQCalculatorAdapter
@@ -31,7 +33,8 @@ class calculatorFragment : Fragment() {
         val inputBahanBaku = binding.root.findViewById<EditText>(R.id.input_bahanbaku)
         val inputKemasanTerpakai = binding.root.findViewById<EditText>(R.id.input_kemasanterpakai)
         val inputHargaKemasan = binding.root.findViewById<EditText>(R.id.input_hargakemasan)
-        val hasilEoq = binding.root.findViewById<EditText>(R.id.hasil_eoq)
+        val hasilEoq = binding.root.findViewById<TextView>(R.id.hasil_eoq)
+        val status = binding.root.findViewById<TextView>(R.id.status)
         val hitungEoqButton = binding.root.findViewById<Button>(R.id.hitung_eoq)
 
         binding.settingApp.setOnClickListener {
@@ -44,12 +47,30 @@ class calculatorFragment : Fragment() {
         }
 
         hitungEoqButton.setOnClickListener {
-            val beratBahan = inputBahanBaku.text.toString().toDoubleOrNull() ?: 0.0
-            val jumlahKemasan = inputKemasanTerpakai.text.toString().toDoubleOrNull() ?: 0.0
-            val hargaKemasan = inputHargaKemasan.text.toString().toDoubleOrNull() ?: 0.0
-            val hasilPerhitungan = eoqCalculatorAdapter.calculateEOQ(beratBahan, jumlahKemasan, hargaKemasan)
-            hasilEoq.setText(hasilPerhitungan.toString())
+            val beratBahan = inputBahanBaku.text.toString().toFloatOrNull()
+            val jumlahKemasan = inputKemasanTerpakai.text.toString().toIntOrNull()
+            val hargaKemasan = inputHargaKemasan.text.toString().toIntOrNull()
+            val tanggal = inputTanggal.text.toString()
+
+            if (beratBahan != null && jumlahKemasan != null && hargaKemasan != null && tanggal.isNotEmpty()) {
+                val hasilPerhitungan = eoqCalculatorAdapter.calculateEOQ(beratBahan, jumlahKemasan, hargaKemasan)
+                hasilEoq.text = hasilPerhitungan.toString()
+
+                if (hasilPerhitungan == 29.0) {
+                    status.text = "Perhitungan EOQ Optimal"
+                } else if (hasilPerhitungan < 29.0) {
+                    status.text = "Perhitungan EOQ Kurang Optimal"
+                } else {
+                    status.text = "Perhitungan EOQ Berlebih"
+                }
+            } else {
+                status.text = "Semua input harus diisi"
+                Toast.makeText(context, "Semua Inputan Harus Terisi", Toast.LENGTH_SHORT).show()
+            }
         }
+
+
+
 
         return binding.root
     }
