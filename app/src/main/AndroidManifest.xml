@@ -16,9 +16,6 @@
         android:theme="@style/Theme.Obugame"
         tools:targetApi="31">
         <activity
-            android:name=".menu_fragment.NotedActivity"
-            android:exported="false" />
-        <activity
             android:name=".page_activity.HistoryActivity"
             android:exported="false" />
         <activity

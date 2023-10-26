@@ -35,5 +35,8 @@
     <string name="tanggal_">26/10/2023</string>
     <string name="hasil_eoq">700</string>
     <string name="string_hasil_eoq">Hasil EOQ =</string>
+    <string name="upload_foto">upload foto</string>
+    <string name="masukkan_nama_bahan_baku_disini">masukkan nama bahan baku disini</string>
+    <string name="simpan_data">Simpan Data</string>
 
 </resources>

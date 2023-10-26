@@ -5,15 +5,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.cardview.widget.CardView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.rumahproduksi.obugame.R
 import com.rumahproduksi.obugame.adapter.BahanBakuAdapter
 import com.rumahproduksi.obugame.adapter.dataclass_model.BahanBaku
 import com.rumahproduksi.obugame.databinding.FragmentBahanBakuBinding
-
 
 class BahanBakuFragment : Fragment() {
     lateinit var binding: FragmentBahanBakuBinding
@@ -24,11 +28,8 @@ class BahanBakuFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = FragmentBahanBakuBinding.inflate(inflater, container, false)
-
-
-        list = ArrayList() // Inisialisasi list
+        list = ArrayList()
         database = FirebaseDatabase.getInstance()
         binding.progressBar.visibility = View.VISIBLE
         val adapter = context?.let { BahanBakuAdapter(it, list) }
@@ -54,6 +55,18 @@ class BahanBakuFragment : Fragment() {
                     binding.progressBar.visibility = View.GONE
                 }
             })
+
+
+        binding.floatingActionButton.setOnClickListener {
+            val builder = AlertDialog.Builder(requireContext())
+            val inflater = requireActivity().layoutInflater
+            val dialogView = inflater.inflate(R.layout.cardview_popup, null)
+            builder.setView(dialogView)
+            val alertDialog = builder.create()
+            alertDialog.show()
+
+        }
+
 
         return binding.root
     }
