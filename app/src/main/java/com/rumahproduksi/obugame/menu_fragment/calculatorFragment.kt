@@ -3,23 +3,28 @@ package com.rumahproduksi.obugame.menu_fragment
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.rumahproduksi.obugame.R
 import com.rumahproduksi.obugame.page_activity.SettingActivity
+import com.rumahproduksi.obugame.adapter.dataclass_model.BahanBaku
 import com.rumahproduksi.obugame.adapter.dataclass_model.CalculatorModel
 import com.rumahproduksi.obugame.adapter.logic.EOQCalculatorAdapter
 import com.rumahproduksi.obugame.databinding.FragmentCalculatorBinding
 import java.text.SimpleDateFormat
 import java.util.Calendar
+import kotlin.math.round
 
 class calculatorFragment : Fragment() {
     lateinit var binding: FragmentCalculatorBinding
@@ -40,6 +45,7 @@ class calculatorFragment : Fragment() {
         val inputBahanBaku = binding.root.findViewById<EditText>(R.id.input_bahanbaku)
         val inputKemasanTerpakai = binding.root.findViewById<EditText>(R.id.input_kemasanterpakai)
         val inputHargaKemasan = binding.root.findViewById<EditText>(R.id.input_hargakemasan)
+        val bersihkandata = binding.root.findViewById<ImageView>(R.id.clear)
 
         hasilEoq = binding.root.findViewById(R.id.hasil_eoq)
         status = binding.root.findViewById(R.id.status)
@@ -48,6 +54,15 @@ class calculatorFragment : Fragment() {
         binding.settingApp.setOnClickListener {
             val intent = Intent(context, SettingActivity::class.java)
             startActivity(intent)
+        }
+
+        bersihkandata.setOnClickListener { //finish()
+            inputBahanBaku.setText("")
+            inputKemasanTerpakai.setText("")
+            inputHargaKemasan.setText("")
+            inputTanggal.setText("")
+            hasilEoq.text = ""
+            status.text = ""
         }
 
         inputTanggal.setOnClickListener {
@@ -119,10 +134,18 @@ class calculatorFragment : Fragment() {
                 )
                 val newBahanBakuRef = mDbRef.push()
                 newBahanBakuRef.setValue(newCalculatorModel)
-                Toast.makeText(context, "Data berhasil ditambahkan ke Firebase", Toast.LENGTH_SHORT)
-                    .show()
+
+                Toast.makeText(context, "Data berhasil ditambahkan ke Riwayat", Toast.LENGTH_SHORT).show()
                 dataSudahDisimpan = true
+
+                // Setelah 5 detik, atur kembali dataSudahDisimpan ke false
+                Handler().postDelayed({
+                    dataSudahDisimpan = false
+                }, 5000) // 5000 milliseconds = 5 seconds
+            } else {
+                Toast.makeText(context, "Data telah disimpan dalam 5 detik terakhir", Toast.LENGTH_SHORT).show()
             }
+
         } else {
             status.text = "Semua input harus diisi"
             Toast.makeText(context, "Semua Inputan Harus Terisi", Toast.LENGTH_SHORT).show()

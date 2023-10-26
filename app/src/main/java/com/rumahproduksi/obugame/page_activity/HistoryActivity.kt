@@ -13,5 +13,7 @@ class HistoryActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
+
+
     }
 }
