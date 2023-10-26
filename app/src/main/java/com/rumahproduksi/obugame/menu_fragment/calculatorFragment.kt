@@ -14,14 +14,19 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.rumahproduksi.obugame.R
 import com.rumahproduksi.obugame.page_activity.SettingActivity
 import com.rumahproduksi.obugame.adapter.dataclass_model.BahanBaku
 import com.rumahproduksi.obugame.adapter.dataclass_model.CalculatorModel
 import com.rumahproduksi.obugame.adapter.logic.EOQCalculatorAdapter
 import com.rumahproduksi.obugame.databinding.FragmentCalculatorBinding
+import com.rumahproduksi.obugame.page_activity.HistoryActivity
+
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import kotlin.math.round
@@ -46,6 +51,7 @@ class calculatorFragment : Fragment() {
         val inputKemasanTerpakai = binding.root.findViewById<EditText>(R.id.input_kemasanterpakai)
         val inputHargaKemasan = binding.root.findViewById<EditText>(R.id.input_hargakemasan)
         val bersihkandata = binding.root.findViewById<ImageView>(R.id.clear)
+        val riwayat = binding.root.findViewById<Button>(R.id.button_riwayat)
 
         hasilEoq = binding.root.findViewById(R.id.hasil_eoq)
         status = binding.root.findViewById(R.id.status)
@@ -55,6 +61,13 @@ class calculatorFragment : Fragment() {
             val intent = Intent(context, SettingActivity::class.java)
             startActivity(intent)
         }
+
+        riwayat.setOnClickListener {
+            val intent = Intent(context, HistoryActivity::class.java)
+            startActivity(intent)
+        }
+
+
 
         bersihkandata.setOnClickListener { //finish()
             inputBahanBaku.setText("")
@@ -106,6 +119,7 @@ class calculatorFragment : Fragment() {
         val dateFormat = SimpleDateFormat("dd-MM-yyyy")
         return dateFormat.format(calendar.time)
     }
+
     private fun tambahHasil(beratBahan: Float?, jumlahKemasan: Int?, hargaKemasan: Int?, tanggal: String) {
         if (beratBahan != null && jumlahKemasan != null && hargaKemasan != null && tanggal.isNotEmpty()) {
             val hasileoq = eoqCalculatorAdapter.calculateEOQ(beratBahan, jumlahKemasan, hargaKemasan)
@@ -125,27 +139,43 @@ class calculatorFragment : Fragment() {
                 val firebaseDatabase = FirebaseDatabase.getInstance()
                 val mDbRef = firebaseDatabase.getReference("hasil_perhitungan")
 
-                val newCalculatorModel = CalculatorModel(
-                    beratBahan.toString(),
-                    jumlahKemasan.toString(),
-                    hargaKemasan.toString(),
-                    hasileoq.toString(),
-                    tanggal
-                )
-                val newBahanBakuRef = mDbRef.push()
-                newBahanBakuRef.setValue(newCalculatorModel)
+                // Ambil data ID terakhir dari Firebase
+                mDbRef.orderByKey().limitToLast(1).addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        val newId = if (snapshot.hasChildren()) {
+                            val lastId = snapshot.children.first().key?.toInt() ?: 0
+                            lastId + 1
+                        } else {
+                            1 // Jika tidak ada data sebelumnya, gunakan ID awal
+                        }
 
-                Toast.makeText(context, "Data berhasil ditambahkan ke Riwayat", Toast.LENGTH_SHORT).show()
-                dataSudahDisimpan = true
+                        val newCalculatorModel = CalculatorModel(
+                            newId,
+                            beratBahan.toString(),
+                            jumlahKemasan.toString(),
+                            hargaKemasan.toString(),
+                            hasileoq.toString(),
+                            tanggal
+                        )
 
-                // Setelah 5 detik, atur kembali dataSudahDisimpan ke false
-                Handler().postDelayed({
-                    dataSudahDisimpan = false
-                }, 5000) // 5000 milliseconds = 5 seconds
+                        mDbRef.child(newId.toString()).setValue(newCalculatorModel)
+
+                        Toast.makeText(context, "Data berhasil ditambahkan ke Riwayat", Toast.LENGTH_SHORT).show()
+                        dataSudahDisimpan = true
+
+                        // Setelah 5 detik, atur kembali dataSudahDisimpan ke false
+                        Handler().postDelayed({
+                            dataSudahDisimpan = false
+                        }, 5000) // 5000 milliseconds = 5 seconds
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        Toast.makeText(context, "Error: $error", Toast.LENGTH_SHORT).show()
+                    }
+                })
             } else {
                 Toast.makeText(context, "Data telah disimpan dalam 5 detik terakhir", Toast.LENGTH_SHORT).show()
             }
-
         } else {
             status.text = "Semua input harus diisi"
             Toast.makeText(context, "Semua Inputan Harus Terisi", Toast.LENGTH_SHORT).show()
