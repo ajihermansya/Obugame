@@ -37,4 +37,9 @@ class HistoryAdapter(private val context: Context, private val list: ArrayList<C
     override fun getItemCount(): Int {
      return list.size
     }
+
+    fun sortDataByDescending() {
+        list.sortByDescending { it.newId }
+        notifyDataSetChanged()
+    }
 }

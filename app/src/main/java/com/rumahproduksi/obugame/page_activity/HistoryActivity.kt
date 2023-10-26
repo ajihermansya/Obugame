@@ -31,7 +31,7 @@ class HistoryActivity : AppCompatActivity() {
         list = ArrayList() // Inisialisasi list
         database = FirebaseDatabase.getInstance()
         binding.progressBar.visibility = View.VISIBLE
-
+        val adapter = HistoryAdapter(this, list)
 
         database.reference.child("hasil_perhitungan")
             .addValueEventListener(object : ValueEventListener {
@@ -41,8 +41,8 @@ class HistoryActivity : AppCompatActivity() {
                         val data = snapshot1.getValue(CalculatorModel::class.java)
                         list.add(data!!)
                     }
-                    binding.recyclerView.adapter = HistoryAdapter(this@HistoryActivity, list)
-                    // Setelah data tampil, sembunyikan ProgressBar
+                    adapter.sortDataByDescending()
+                    binding.recyclerView.adapter = adapter
                     binding.progressBar.visibility = View.GONE
                 }
 
