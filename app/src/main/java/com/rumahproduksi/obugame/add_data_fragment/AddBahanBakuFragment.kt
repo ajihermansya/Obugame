@@ -1,4 +1,4 @@
-package com.rumahproduksi.obugame.tambahdata_fragment
+package com.rumahproduksi.obugame.add_data_fragment
 
 import android.os.Bundle
 import android.text.TextUtils

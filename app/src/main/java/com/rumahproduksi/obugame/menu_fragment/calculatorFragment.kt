@@ -26,7 +26,6 @@ import com.rumahproduksi.obugame.adapter.dataclass_model.CalculatorModel
 import com.rumahproduksi.obugame.adapter.logic.EOQCalculatorAdapter
 import com.rumahproduksi.obugame.databinding.FragmentCalculatorBinding
 import com.rumahproduksi.obugame.page_activity.HistoryActivity
-
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import kotlin.math.round

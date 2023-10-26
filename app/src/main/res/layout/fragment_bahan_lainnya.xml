@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".activity_fragmen.BahanLainnyaFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <!-- Isi konten fragment -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Ini Halaman Bahan Lainnya" />
+        android:text="Ini Halaman Bahan Lainnya"
+        android:textSize="24sp"
+        android:gravity="center" />
 
-</FrameLayout>
+    <!-- Atau, Anda dapat menggantinya dengan konten yang sesuai sesuai kebutuhan Anda -->
+
+</RelativeLayout>

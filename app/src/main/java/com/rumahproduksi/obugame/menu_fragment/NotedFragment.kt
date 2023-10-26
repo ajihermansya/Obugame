@@ -1,5 +1,6 @@
 package com.rumahproduksi.obugame.menu_fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import com.rumahproduksi.obugame.databinding.FragmentNotedBinding
 import com.rumahproduksi.obugame.activity_fragmen.BahanBakuFragment
 import com.rumahproduksi.obugame.activity_fragmen.BahanLainnyaFragment
 import com.rumahproduksi.obugame.activity_fragmen.BiayaLainFragment
+import com.rumahproduksi.obugame.page_activity.SettingActivity
 
 
 class NotedFragment : Fragment() {
@@ -39,6 +41,10 @@ class NotedFragment : Fragment() {
             tab.text = titleFragments[posisi]
         }.attach()
 
+        binding.settingApp.setOnClickListener {
+            val intent = Intent(context, SettingActivity::class.java)
+            startActivity(intent)
+        }
 
         return binding.root
     }

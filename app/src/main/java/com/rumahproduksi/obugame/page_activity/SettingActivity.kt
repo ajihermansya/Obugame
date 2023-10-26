@@ -7,9 +7,9 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.rumahproduksi.obugame.R
 import com.rumahproduksi.obugame.adapter.DetailAdapter
 import com.rumahproduksi.obugame.databinding.ActivitySettingBinding
-import com.rumahproduksi.obugame.tambahdata_fragment.AddBahanBakuFragment
-import com.rumahproduksi.obugame.tambahdata_fragment.AddBahanLainnyaFragment
-import com.rumahproduksi.obugame.tambahdata_fragment.AddBiayaLainnyaFragment
+import com.rumahproduksi.obugame.add_data_fragment.AddBahanBakuFragment
+import com.rumahproduksi.obugame.add_data_fragment.AddBahanLainnyaFragment
+import com.rumahproduksi.obugame.add_data_fragment.AddBiayaLainnyaFragment
 
 class SettingActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySettingBinding

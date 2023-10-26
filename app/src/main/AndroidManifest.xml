@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Obugame"
         tools:targetApi="31">
         <activity
+            android:name=".menu_fragment.NotedActivity"
+            android:exported="false" />
+        <activity
             android:name=".page_activity.HistoryActivity"
             android:exported="false" />
         <activity
@@ -34,6 +37,7 @@
         <activity
             android:name=".page_activity.SplashScreenActivity"
             android:exported="false">
+
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->

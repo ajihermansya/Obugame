@@ -17,6 +17,9 @@ class HistoryActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHistoryBinding
     private lateinit var database: FirebaseDatabase
     private lateinit var list: ArrayList<CalculatorModel>
+    private var lastItemId: Int = 0
+    private val itemsPerPage = 10
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
