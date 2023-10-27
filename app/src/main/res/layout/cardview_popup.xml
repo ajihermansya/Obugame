@@ -54,7 +54,7 @@
                    android:gravity="center"
                     android:orientation="vertical">
                     <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/userImage"
+                        android:id="@+id/userImage_1"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:src="@drawable/logo_obugame_new" />
@@ -77,7 +77,7 @@
                     android:paddingStart="10dp">
 
                     <EditText
-                        android:id="@+id/input_bahanbaku"
+                        android:id="@+id/input_bahanbaku_1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -98,7 +98,7 @@
                     android:paddingStart="10dp"
                     android:paddingBottom="20dp">
                     <Button
-                        android:id="@+id/hitung_eoq"
+                        android:id="@+id/simpan_data"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginEnd="5dp"

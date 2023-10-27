@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Obugame</string>
     <string name="obugame">OBUGAME</string>
-    <string name="welcome_user">Welcome User</string>
+    <string name="welcome_user">Optimalisasi Persediaan Bahan Baku</string>
     <string name="eoq_string">EOQ (Economic Order Quantity)</string>
     <string name="jumlah_bahan_baku">Jumlah Bahan Baku</string>
     <string name="satuan_kg">Kg</string>

@@ -56,11 +56,6 @@ class calculatorFragment : Fragment() {
         status = binding.root.findViewById(R.id.status)
         val hitungEoqButton = binding.root.findViewById<Button>(R.id.hitung_eoq)
 
-        binding.settingApp.setOnClickListener {
-            val intent = Intent(context, SettingActivity::class.java)
-            startActivity(intent)
-        }
-
         riwayat.setOnClickListener {
             val intent = Intent(context, HistoryActivity::class.java)
             startActivity(intent)
@@ -125,11 +120,11 @@ class calculatorFragment : Fragment() {
             hasilEoq.text = hasileoq.toString()
 
             val statusText = if (hasileoq == 29.0) {
-                "Perhitungan EOQ Optimal"
+                "Persedian Bahan Baku Sudah Optimal"
             } else if (hasileoq < 29.0) {
-                "Perhitungan EOQ Kurang Optimal"
+                "Persedian Bahan Baku Kurang Optimal"
             } else {
-                "Perhitungan EOQ Berlebih"
+                "Persedian Bahan Baku Berlebih"
             }
             status.text = statusText
 
