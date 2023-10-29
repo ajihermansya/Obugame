@@ -26,7 +26,7 @@
     <string name="tandan">tandan</string>
     <string name="tanggal">tanggal</string>
     <string name="keterangan">Keterangan :</string>
-    <string name="status">Masukkan angka untuk melihat hasil</string>
+    <string name="status">Silahkan masukan data terlebih dahulu</string>
     <string name="kg">/kg</string>
     <string name="buah">/buah</string>
     <string name="kemasan_terpakai">Jumlah Kemasan Terpakai :</string>

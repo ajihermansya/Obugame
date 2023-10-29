@@ -51,7 +51,6 @@ class calculatorFragment : Fragment() {
         val inputHargaKemasan = binding.root.findViewById<EditText>(R.id.input_hargakemasan)
         val bersihkandata = binding.root.findViewById<ImageView>(R.id.clear)
         val riwayat = binding.root.findViewById<Button>(R.id.button_riwayat)
-
         hasilEoq = binding.root.findViewById(R.id.hasil_eoq)
         status = binding.root.findViewById(R.id.status)
         val hitungEoqButton = binding.root.findViewById<Button>(R.id.hitung_eoq)
@@ -60,7 +59,6 @@ class calculatorFragment : Fragment() {
             val intent = Intent(context, HistoryActivity::class.java)
             startActivity(intent)
         }
-
 
 
         bersihkandata.setOnClickListener { //finish()
@@ -82,7 +80,6 @@ class calculatorFragment : Fragment() {
             val jumlahKemasan = inputKemasanTerpakai.text.toString().toIntOrNull()
             val hargaKemasan = inputHargaKemasan.text.toString().toIntOrNull()
             val tanggal = inputTanggal.text.toString()
-
             tambahHasil(beratBahan, jumlahKemasan, hargaKemasan, tanggal )
         }
 

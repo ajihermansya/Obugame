@@ -89,8 +89,6 @@ class BahanBakuFragment : Fragment() {
                 tambahdata(inputImage, inputBahanBaku)
             }
         }
-
-
         return binding.root
     }
 

@@ -6,18 +6,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentActivity
 import com.google.android.material.tabs.TabLayoutMediator
 import com.rumahproduksi.obugame.R
 import com.rumahproduksi.obugame.adapter.DetailAdapter
-import com.rumahproduksi.obugame.databinding.FragmentNotedBinding
 import com.rumahproduksi.obugame.activity_fragmen.BahanBakuFragment
 import com.rumahproduksi.obugame.activity_fragmen.BahanLainnyaFragment
 import com.rumahproduksi.obugame.activity_fragmen.BiayaLainFragment
+import com.rumahproduksi.obugame.databinding.FragmentNotedBinding
 import com.rumahproduksi.obugame.page_activity.SettingActivity
-
 
 class NotedFragment : Fragment() {
     lateinit var binding: FragmentNotedBinding
+    lateinit var adapter: DetailAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,18 +36,19 @@ class NotedFragment : Fragment() {
         val titleFragments = mutableListOf(
             getString(R.string.bahanbaku), getString(R.string.bahanlainnya), getString(R.string.biayalainnya)
         )
-        val adapter = DetailAdapter(this.requireActivity(), fragments)
+
+        // Inisialisasi adapter dengan data fragment
+        adapter = DetailAdapter(requireContext() as FragmentActivity, fragments)
         binding.viewpager.adapter = adapter
-        TabLayoutMediator(binding.tab,binding.viewpager) { tab, posisi ->
+        TabLayoutMediator(binding.tab, binding.viewpager) { tab, posisi ->
             tab.text = titleFragments[posisi]
         }.attach()
 
         binding.settingApp.setOnClickListener {
-            val intent = Intent(context, SettingActivity::class.java)
+            val intent = Intent(requireContext(), SettingActivity::class.java)
             startActivity(intent)
         }
 
         return binding.root
     }
-
 }

@@ -28,6 +28,7 @@
                     <TextView
                         android:id="@+id/name_Akun"
                         android:layout_width="0dp"
+                        android:layout_marginTop="12dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
@@ -37,10 +38,6 @@
                         android:textStyle="bold" />
                 </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="10dp"
-                    android:background="@color/kuning" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -225,7 +222,7 @@
                             android:background="@drawable/shape_rectangel_coklat"
                             android:text="@string/hitung_eoq"
                             android:textAllCaps="false"
-                            android:textColor="@color/white"
+                            android:textColor="@color/black"
                             android:textSize="18sp"
                             app:cornerRadius="30dp" />
 
@@ -239,7 +236,7 @@
                             android:background="@drawable/shape_rectangel_putih"
                             android:text="@string/riwayat"
                             android:textAllCaps="false"
-                            android:textColor="@color/coklat"
+                            android:textColor="@color/black"
                             android:textSize="18sp"
                             app:cornerRadius="0dp" />
                     </LinearLayout>
@@ -277,7 +274,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/keterangan"
-                                android:textSize="20sp"
+                                android:textSize="16sp"
                                 android:textColor="@color/red"
                                 android:layout_marginStart="10dp"
                                 android:textStyle="bold"/>
@@ -285,17 +282,14 @@
                                 android:id="@+id/status"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="@string/status"
                                 android:textColor="@color/red"
                                 android:layout_marginEnd="5dp"
-                                android:textSize="20sp"
+                                android:textSize="16sp"
                                 android:layout_marginStart="5dp"
                                 android:textStyle="italic"/>
                         </LinearLayout>
-
-
                     </LinearLayout>
-
-
 
 
                 </LinearLayout>

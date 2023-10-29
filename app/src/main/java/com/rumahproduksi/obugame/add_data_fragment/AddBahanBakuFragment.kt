@@ -26,25 +26,33 @@ class AddBahanBakuFragment : Fragment() {
         binding.buttonSave.setOnClickListener {
             val jenispisang = binding.jenisPisang.text.toString()
             val beratBahan = binding.inputBahanbaku.text.toString()
-           tambahdata(jenispisang, beratBahan)
+            tambahdata(jenispisang, beratBahan)
         }
 
         return binding.root
     }
 
-    private fun tambahdata(jenispisang : String, beratBahan : String){
+    private fun tambahdata(jenispisang: String, beratBahan: String) {
         if (TextUtils.isEmpty(jenispisang) || TextUtils.isEmpty(beratBahan)) {
             Toast.makeText(context, "Isi semua kolom terlebih dahulu.", Toast.LENGTH_SHORT).show()
             return
         }
 
         try {
-            //Menambahkan data ke Firebase
+            // Menambahkan data ke Firebase
+            val newBahanBaku = BahanBaku(null, inputimage = null, jenispisang, beratBahan) // ID diisi null di sini
+
             val newBahanBakuRef = mDbRef.push()
-            newBahanBakuRef.setValue(BahanBaku(jenispisang, beratBahan))
+            newBahanBakuRef.setValue(newBahanBaku)
+
+            // Mengambil ID yang baru dibuat dan mengupdate ID di dalam objek BahanBaku
+            newBahanBaku.id = newBahanBakuRef.key
+            mDbRef.child(newBahanBaku.id!!).setValue(newBahanBaku)
+
             Toast.makeText(context, "Data berhasil ditambahkan ke Firebase", Toast.LENGTH_SHORT).show()
         } catch (e: NumberFormatException) {
             Toast.makeText(context, "Masukkan berat bahan tidak valid. Harap masukkan angka yang benar.", Toast.LENGTH_SHORT).show()
         }
     }
+
 }

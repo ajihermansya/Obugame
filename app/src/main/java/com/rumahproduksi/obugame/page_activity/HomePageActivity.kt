@@ -30,36 +30,24 @@ class HomePageActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.calculet -> {
                     replaceFragment(calculatorFragment())
-                    val options = ActivityOptions.makeCustomAnimation(this,
-                        R.anim.slide_in_right,
-                        R.anim.slide_out_left
-                    )
-                    startActivity(intent, options.toBundle())
                     true
                 }
                 R.id.noted -> {
                     replaceFragment(NotedFragment())
-                    val options = ActivityOptions.makeCustomAnimation(this,
-                        R.anim.slide_in_right,
-                        R.anim.slide_out_left
-                    )
-                    startActivity(intent, options.toBundle())
                     true
                 }
-
                 R.id.profile -> {
                     Toast.makeText(this, "Ini adalah halaman profil.", Toast.LENGTH_SHORT).show()
                     true
                 }
-
                 else -> {
                     Toast.makeText(this, "Item yang dipilih tidak dikenali.", Toast.LENGTH_SHORT).show()
                     false
                 }
-
             }
-
         }
+
+
         replaceFragment(calculatorFragment())
 
 

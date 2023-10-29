@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Obugame" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/kuning</item>
+        <item name="colorPrimary">@color/coklat</item>
         <item name="colorPrimaryVariant">@color/coklat</item>
         <item name="colorOnPrimary">@color/white</item>
 
