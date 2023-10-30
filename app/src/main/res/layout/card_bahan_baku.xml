@@ -29,7 +29,7 @@
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="55dp"
                     android:layout_height="55dp"
-                    android:src="@drawable/pisang_one"
+                    android:src="@drawable/icon_obugame_fix"
                     android:id="@+id/userImage"/>
 
                 <LinearLayout

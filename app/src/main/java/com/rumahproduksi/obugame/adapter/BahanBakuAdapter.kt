@@ -32,15 +32,15 @@ class BahanBakuAdapter(private val context: Context, private val list: ArrayList
 
     override fun onBindViewHolder(holder: BahanBakuAdapter.RiwayatViewHolder, position: Int) {
         val bahanBaku = list[position]
+        holder.binding.userName.text = bahanBaku.jenispisang
         val intent = Intent(context, InventoriActivity::class.java)
         holder.itemView.setOnClickListener {
-            intent.putExtra("id", bahanBaku.id )
+            intent.putExtra("id", bahanBaku.id)
             Toast.makeText(context, "ini adalah id ${bahanBaku.id}", Toast.LENGTH_SHORT).show()
-            holder.binding.userName.text = bahanBaku.jenispisang
             context.startActivity(intent)
         }
-
     }
+
 
     override fun getItemCount(): Int {
      return list.size
