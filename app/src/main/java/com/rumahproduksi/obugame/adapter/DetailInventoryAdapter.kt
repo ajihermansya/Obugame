@@ -34,6 +34,7 @@ class DetailInventoryAdapter(private val context: Context, private val list: Arr
         holder.binding.iconBack.setOnClickListener {
             (context as InventoriActivity).finish()
         }
+
     }
 
     override fun getItemCount(): Int {
