@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/calculet"
+        android:title="Calcuator"
+        android:icon="@drawable/icon_caculator"
+        />
+
+    <item
+        android:id="@+id/noted"
+        android:title="Noted"
+        android:icon="@drawable/icon_note"
+        />
+
+
+    <item
+        android:id="@+id/profile"
+        android:title="Profile"
+        android:icon="@drawable/icon_person"
+        />
+
+</menu>

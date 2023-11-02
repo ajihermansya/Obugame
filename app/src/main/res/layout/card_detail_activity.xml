@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/kuning">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:background="@color/kuning"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:id="@+id/icon_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:src="@drawable/icon_back"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_marginEnd="15dp"
+                        android:text="Detail Inventori"
+                        android:textColor="@color/coklat"
+                        android:textStyle="bold"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </com.google.android.material.appbar.MaterialToolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <View
+        android:id="@+id/view"
+        android:layout_below="@id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/coklat" />
+
+    <TableLayout
+        android:layout_below="@id/view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="9dp"
+            app:cardUseCompatPadding="true"
+            app:cardBackgroundColor="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/input_border"
+                android:padding="10dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:src="@drawable/icon_obugame_fix"
+                    android:id="@+id/userImage"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="10dp">
+
+                    <TextView
+                        android:id="@+id/userName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pisang_kepok"
+                        android:textColor="@color/black"
+                        android:background="@drawable/shape_rectangel_kuning"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="6dp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/jumlah_stok"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/value_nilai"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="@string/value_tandan"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="@string/tandan"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="9dp"
+            app:cardUseCompatPadding="true"
+            app:cardBackgroundColor="@color/white">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/brown_border"
+                android:stretchColumns="0,1,2,3">
+
+                <TableRow>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="Tanggal"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="4dp"
+                        android:background="@drawable/brown_border"
+                        android:gravity="center" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/brown_border"
+                        android:text="Jenis"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:layout_marginBottom="4dp"
+                        android:textColor="@color/black"
+                        android:gravity="center" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="Jumlah"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:layout_marginBottom="4dp"
+                        android:textColor="@color/black"
+                        android:background="@drawable/brown_border"
+                        android:gravity="center" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="Stok"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:layout_marginBottom="4dp"
+                        android:textColor="@color/black"
+                        android:background="@drawable/brown_border"
+                        android:gravity="center" />
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:id="@+id/tanggal_coloum"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="Row 1"
+                        android:background="@drawable/brown_border"
+                        android:gravity="center" />
+                    <TextView
+                        android:id="@+id/jenis_coloum"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/brown_border"
+                        android:text="Content 1-1"
+                        android:gravity="center" />
+                    <TextView
+                        android:id="@+id/jumlah_coloum"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="Content 1-2"
+                        android:background="@drawable/brown_border"
+                        android:gravity="center" />
+                    <TextView
+                        android:id="@+id/stok_coloum"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="Content 1-3"
+                        android:background="@drawable/brown_border"
+                        android:gravity="center" />
+                </TableRow>
+            </TableLayout>
+        </androidx.cardview.widget.CardView>
+
+    </TableLayout>
+
+
+
+
+</RelativeLayout>

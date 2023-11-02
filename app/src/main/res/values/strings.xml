@@ -1,3 +1,42 @@
 <resources>
     <string name="app_name">Obugame</string>
+    <string name="obugame">OBUGAME</string>
+    <string name="welcome_user">Optimalisasi Persediaan Bahan Baku</string>
+    <string name="eoq_string">EOQ (Economic Order Quantity)</string>
+    <string name="jumlah_bahan_baku">Jumlah Bahan Baku</string>
+    <string name="satuan_kg">Kg</string>
+    <string name="jumlah_kemasan_terpakai">Jumlah Kemasan Terpakai</string>
+    <string name="masukan_berat_bahan_baku">masukan berat bahan baku</string>
+    <string name="harga_kemasan_buah">Harga Kemasan (/buah)</string>
+    <string name="rupiah">Rp.</string>
+    <string name="hitung_eoq">Hitung EOQ</string>
+    <string name="riwayat">Riwayat</string>
+    <string name="masukan_jumlah_kemasan">masukan jumlah kemasan</string>
+    <string name="masukkan_harga_kemasan">harga kemasan</string>
+    <string name="bahanlainnya">Bahan Lainnya</string>
+    <string name="biayalainnya">Biaya Lainnya</string>
+    <string name="bahanbaku">Bahan Baku</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hasil_perhitungan">Hasil Perhitungan</string>
+    <string name="simpan">Simpan</string>
+    <string name="pisang_kepok">Pisang Kepok</string>
+    <string name="jumlah_stok">Jumlah Stok :</string>
+    <string name="value_tandan">5</string>
+    <string name="tandan">tandan</string>
+    <string name="tanggal">tanggal</string>
+    <string name="keterangan">Keterangan :</string>
+    <string name="status">Silahkan masukan data terlebih dahulu</string>
+    <string name="kg">/kg</string>
+    <string name="buah">/buah</string>
+    <string name="kemasan_terpakai">Jumlah Kemasan Terpakai :</string>
+    <string name="biaya_pesan_rp">Biaya Pesan : Rp.</string>
+    <string name="bahan_baku">Jumlah Bahan Baku :</string>
+    <string name="tanggal_">26/10/2023</string>
+    <string name="hasil_eoq">700</string>
+    <string name="string_hasil_eoq">Hasil EOQ =</string>
+    <string name="upload_foto">upload foto</string>
+    <string name="masukkan_nama_bahan_baku_disini">masukkan nama bahan baku disini</string>
+    <string name="simpan_data">Simpan Data</string>
+
 </resources>

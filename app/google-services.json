@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "884382762265",
+    "project_id": "obugame-ab67a",
+    "storage_bucket": "obugame-ab67a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:884382762265:android:da7b0e50a7666b0e993188",
+        "android_client_info": {
+          "package_name": "com.rumahproduksi.obugame"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADktKNpbacqXc4ftThNlkR46PbdViKO2E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
