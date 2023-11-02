@@ -45,9 +45,11 @@
                     android:layout_marginBottom="40dp"
                     android:orientation="vertical">
 
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -56,8 +58,9 @@
                             android:paddingStart="10dp"
                             android:paddingTop="10dp"
                             android:layout_weight="1"
+                            android:textColor="@color/black"
                             android:paddingBottom="3dp"
-                            android:text="Tanggal"
+                            android:text="@string/jumlah_bahan_baku"
                             android:textSize="18sp" />
 
                         <ImageView
@@ -67,46 +70,6 @@
                             android:src="@drawable/icon_sampah"
                             android:paddingTop="10dp"
                             android:paddingEnd="10dp"/>
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:paddingStart="10dp">
-
-                        <EditText
-                            android:id="@+id/tanggal_input"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="@drawable/input_border"
-                            android:drawablePadding="8dp"
-                            android:layout_marginEnd="10dp"
-                            android:hint="@string/tanggal"
-                            android:padding="10dp"
-                            android:focusable="false"
-                            android:clickable="true" />
-
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingStart="10dp"
-                            android:paddingTop="10dp"
-                            android:layout_weight="1"
-                            android:paddingBottom="3dp"
-                            android:text="@string/jumlah_bahan_baku"
-                            android:textSize="18sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -130,6 +93,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingStart="10dp"
+                            android:textColor="@color/black"
                             android:paddingEnd="10dp"
                             android:text="@string/satuan_kg" />
                     </LinearLayout>
@@ -146,6 +110,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingTop="10dp"
+                            android:textColor="@color/black"
                             android:paddingBottom="3dp"
                             android:text="@string/jumlah_kemasan_terpakai"
                             android:textSize="18sp" />
@@ -175,6 +140,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingTop="10dp"
+                            android:textColor="@color/black"
                             android:paddingBottom="3dp"
                             android:text="@string/harga_kemasan_buah"
                             android:textSize="18sp" />
@@ -188,6 +154,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:textColor="@color/black"
                                 android:paddingStart="10dp"
                                 android:paddingEnd="10dp"
                                 android:text="@string/rupiah" />
@@ -222,7 +189,7 @@
                             android:background="@drawable/shape_rectangel_coklat"
                             android:text="@string/hitung_eoq"
                             android:textAllCaps="false"
-                            android:textColor="@color/black"
+                            android:textColor="@color/white"
                             android:textSize="18sp"
                             app:cornerRadius="30dp" />
 
@@ -236,7 +203,7 @@
                             android:background="@drawable/shape_rectangel_putih"
                             android:text="@string/riwayat"
                             android:textAllCaps="false"
-                            android:textColor="@color/black"
+                            android:textColor="@color/coklat"
                             android:textSize="18sp"
                             app:cornerRadius="0dp" />
                     </LinearLayout>
@@ -258,9 +225,8 @@
                             android:background="@drawable/input_border"
                             android:drawablePadding="8dp"
                             android:hint="@string/hasil_perhitungan"
-                            android:textStyle="italic"
                             android:inputType="numberDecimal"
-                            android:textSize="20sp"
+                            android:textSize="22sp"
                             android:padding="10dp" />
                         <LinearLayout
                             android:layout_width="match_parent"

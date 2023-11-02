@@ -1,11 +1,8 @@
 package com.rumahproduksi.obugame.menu_fragment
 
-import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.text.TextUtils
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,21 +11,19 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.rumahproduksi.obugame.R
-import com.rumahproduksi.obugame.page_activity.SettingActivity
-import com.rumahproduksi.obugame.adapter.dataclass_model.BahanBaku
 import com.rumahproduksi.obugame.adapter.dataclass_model.CalculatorModel
 import com.rumahproduksi.obugame.adapter.logic.EOQCalculatorAdapter
 import com.rumahproduksi.obugame.databinding.FragmentCalculatorBinding
 import com.rumahproduksi.obugame.page_activity.HistoryActivity
 import java.text.SimpleDateFormat
-import java.util.Calendar
-import kotlin.math.round
+import java.util.Date
 
 class calculatorFragment : Fragment() {
     lateinit var binding: FragmentCalculatorBinding
@@ -45,7 +40,6 @@ class calculatorFragment : Fragment() {
     ): View? {
         binding = FragmentCalculatorBinding.inflate(inflater, container, false)
 
-        val inputTanggal = binding.root.findViewById<EditText>(R.id.tanggal_input)
         val inputBahanBaku = binding.root.findViewById<EditText>(R.id.input_bahanbaku)
         val inputKemasanTerpakai = binding.root.findViewById<EditText>(R.id.input_kemasanterpakai)
         val inputHargaKemasan = binding.root.findViewById<EditText>(R.id.input_hargakemasan)
@@ -65,54 +59,26 @@ class calculatorFragment : Fragment() {
             inputBahanBaku.setText("")
             inputKemasanTerpakai.setText("")
             inputHargaKemasan.setText("")
-            inputTanggal.setText("")
             hasilEoq.text = ""
             status.text = ""
         }
 
-        inputTanggal.setOnClickListener {
-            showDatePicker(inputTanggal)
-        }
+
 
         mDbRef = FirebaseDatabase.getInstance().reference.child("hasil_perhitungan")
         hitungEoqButton.setOnClickListener {
             val beratBahan = inputBahanBaku.text.toString().toFloatOrNull()
             val jumlahKemasan = inputKemasanTerpakai.text.toString().toIntOrNull()
             val hargaKemasan = inputHargaKemasan.text.toString().toIntOrNull()
-            val tanggal = inputTanggal.text.toString()
-            tambahHasil(beratBahan, jumlahKemasan, hargaKemasan, tanggal )
+            tambahHasil(beratBahan, jumlahKemasan, hargaKemasan )
         }
 
         return binding.root
     }
 
-    private fun showDatePicker(editText: EditText) {
-        val calendar = Calendar.getInstance()
-        val year = calendar.get(Calendar.YEAR)
-        val month = calendar.get(Calendar.MONTH)
-        val day = calendar.get(Calendar.DAY_OF_MONTH)
 
-        val datePickerDialog = DatePickerDialog(
-            requireContext(),
-            { _, selectedYear, selectedMonth, selectedDay ->
-                val formattedDate = formatDate(selectedYear, selectedMonth, selectedDay)
-                editText.setText(formattedDate)
-            },
-            year, month, day
-        )
-
-        datePickerDialog.show()
-    }
-
-    private fun formatDate(year: Int, month: Int, day: Int): String {
-        val calendar = Calendar.getInstance()
-        calendar.set(year, month, day)
-        val dateFormat = SimpleDateFormat("dd-MM-yyyy")
-        return dateFormat.format(calendar.time)
-    }
-
-    private fun tambahHasil(beratBahan: Float?, jumlahKemasan: Int?, hargaKemasan: Int?, tanggal: String) {
-        if (beratBahan != null && jumlahKemasan != null && hargaKemasan != null && tanggal.isNotEmpty()) {
+    private fun tambahHasil(beratBahan: Float?, jumlahKemasan: Int?, hargaKemasan: Int?) {
+        if (beratBahan != null && jumlahKemasan != null && hargaKemasan != null) {
             val hasileoq = eoqCalculatorAdapter.calculateEOQ(beratBahan, jumlahKemasan, hargaKemasan)
             hasilEoq.text = hasileoq.toString()
 
@@ -140,13 +106,17 @@ class calculatorFragment : Fragment() {
                             1 // Jika tidak ada data sebelumnya, gunakan ID awal
                         }
 
+                        val sdf = SimpleDateFormat("dd-MM-yyyy")
+                        val tanggal1 = Date()
+                        val tanggal = sdf.format(tanggal1)
+
                         val newCalculatorModel = CalculatorModel(
                             newId,
                             beratBahan.toString(),
                             jumlahKemasan.toString(),
                             hargaKemasan.toString(),
                             hasileoq.toString(),
-                            tanggal
+                            tanggal = tanggal
                         )
 
                         mDbRef.child(newId.toString()).setValue(newCalculatorModel)
