@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rumahproduksi.obugame.R
 import com.rumahproduksi.obugame.adapter.dataclass_model.BahanBaku
-import com.rumahproduksi.obugame.databinding.CardDetailActivityBinding
+import com.rumahproduksi.obugame.databinding.ActivityInventoriBinding
 import com.rumahproduksi.obugame.page_activity.InventoriActivity
 
 class DetailInventoryAdapter(private val context: Context, private val list: ArrayList<BahanBaku>)
@@ -16,7 +16,7 @@ class DetailInventoryAdapter(private val context: Context, private val list: Arr
     private val filteredList: ArrayList<BahanBaku> = ArrayList()
 
     inner class RiwayatViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val binding: CardDetailActivityBinding = CardDetailActivityBinding.bind(view)
+        val binding: ActivityInventoriBinding = ActivityInventoriBinding.bind(view)
     }
 
     override fun onCreateViewHolder(
@@ -24,7 +24,7 @@ class DetailInventoryAdapter(private val context: Context, private val list: Arr
         viewType: Int
     ): RiwayatViewHolder {
         return RiwayatViewHolder(LayoutInflater.from(parent.context)
-            .inflate(R.layout.card_detail_activity, parent, false))
+            .inflate(R.layout.activity_inventori, parent, false))
     }
 
     override fun onBindViewHolder(holder: DetailInventoryAdapter.RiwayatViewHolder, position: Int) {

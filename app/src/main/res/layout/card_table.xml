@@ -1,0 +1,60 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/kuning"
+    android:gravity="start">
+
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="1dp"
+            app:cardUseCompatPadding="true"
+            app:cardBackgroundColor="@color/white">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/brown_border"
+                android:stretchColumns="0,1,2,3">
+
+                <TableRow>
+                    <TextView
+                        android:id="@+id/tanggal_coloum"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="Row 1"
+                        android:background="@drawable/brown_border"
+                        android:gravity="center" />
+                    <TextView
+                        android:id="@+id/jenis_coloum"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/brown_border"
+                        android:text="Content 1-1"
+                        android:gravity="center" />
+                    <TextView
+                        android:id="@+id/jumlah_coloum"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="Content 1-2"
+                        android:background="@drawable/brown_border"
+                        android:gravity="center" />
+                    <TextView
+                        android:id="@+id/stok_coloum"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="Content 1-3"
+                        android:background="@drawable/brown_border"
+                        android:gravity="center" />
+                </TableRow>
+            </TableLayout>
+        </androidx.cardview.widget.CardView>
+
+
+
+</RelativeLayout>
