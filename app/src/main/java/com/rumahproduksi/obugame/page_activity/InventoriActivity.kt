@@ -182,7 +182,6 @@ class InventoriActivity : AppCompatActivity() {
 
 
 
-
         binding.PembelianBtn.setOnClickListener {
             if (binding.inputJumlahProduksi.text.isEmpty()) {
                 Toast.makeText(this, "Inputkan angka yang sesuai", Toast.LENGTH_SHORT).show()
@@ -249,6 +248,21 @@ class InventoriActivity : AppCompatActivity() {
                     }
                 })
             }
+        }
+
+
+
+        binding.clear.setOnClickListener {
+            val inventoriRef = database.reference.child("bahan_baku")
+                .child(activeID)
+                .child("inventori")
+            inventoriRef.removeValue()
+                .addOnSuccessListener {
+                    Toast.makeText(this@InventoriActivity, "Semua data inventori telah dihapus", Toast.LENGTH_SHORT).show()
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this@InventoriActivity, "Gagal menghapus data inventori", Toast.LENGTH_SHORT).show()
+                }
         }
 
 
