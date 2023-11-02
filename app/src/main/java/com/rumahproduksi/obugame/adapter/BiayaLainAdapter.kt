@@ -13,12 +13,12 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.rumahproduksi.obugame.R
-import com.rumahproduksi.obugame.adapter.dataclass_model.BahanBaku
+import com.rumahproduksi.obugame.adapter.dataclass_model.BahanLainnyaModel
 import com.rumahproduksi.obugame.databinding.CardBahanBakuBinding
-import com.rumahproduksi.obugame.page_activity.inventory_activity.InventoriActivity
+import com.rumahproduksi.obugame.page_activity.inventory_activity.BiayaLainnyaActivity
 
-class BahanBakuAdapter(private val context: Context, private val list: ArrayList<BahanBaku>)
-    : RecyclerView.Adapter<BahanBakuAdapter.RiwayatViewHolder>(){
+class BiayaLainAdapter(private val context: Context, private val list: ArrayList<BahanLainnyaModel>)
+    : RecyclerView.Adapter<BiayaLainAdapter.RiwayatViewHolder>(){
     private val handler = Handler()
     private val delay = 5000L  // 5 detik (dalam milidetik)
     inner class RiwayatViewHolder(view : View) : RecyclerView.ViewHolder(view){
@@ -33,24 +33,24 @@ class BahanBakuAdapter(private val context: Context, private val list: ArrayList
             .inflate(R.layout.card_bahan_baku, parent, false))
     }
 
-    override fun onBindViewHolder(holder: BahanBakuAdapter.RiwayatViewHolder, position: Int) {
-        val bahanBaku = list[position]
-        holder.binding.userName.text = bahanBaku.jenispisang
+    override fun onBindViewHolder(holder: BiayaLainAdapter.RiwayatViewHolder, position: Int) {
+        val bahanLainnyaModel = list[position]
+        holder.binding.userName.text = bahanLainnyaModel.namabahan
 
-        val intent = Intent(context, InventoriActivity::class.java)
+        val intent = Intent(context, BiayaLainnyaActivity::class.java)
         holder.itemView.setOnClickListener {
-            intent.putExtra("id", bahanBaku.id)
+            intent.putExtra("id", bahanLainnyaModel.id)
+            Toast.makeText(context, "ini id bahan lainnya : ${bahanLainnyaModel.id}", Toast.LENGTH_SHORT).show()
             context.startActivity(intent)
         }
 
         holder.itemView.setOnLongClickListener {
             handler.postDelayed({
-                deleteItemFromFirebase(bahanBaku)
+                deleteItemFromFirebase(bahanLainnyaModel)
             }, delay)
 
             true
         }
-
 
     }
 
@@ -59,11 +59,11 @@ class BahanBakuAdapter(private val context: Context, private val list: ArrayList
     }
 
 
-    private fun deleteItemFromFirebase(bahanBaku: BahanBaku) {
+    private fun deleteItemFromFirebase(bahanLainnyaModel: BahanLainnyaModel) {
         val database = FirebaseDatabase.getInstance()
-        val bahanBakuRef = database.reference.child("bahan_baku")
+        val bahanLainnyaRef = database.reference.child("biaya_lain")
 
-        val query = bahanBakuRef.orderByChild("jenispisang").equalTo(bahanBaku.jenispisang)
+        val query = bahanLainnyaRef.orderByChild("namabahan").equalTo(bahanLainnyaModel.namabahan)
         query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val keysToRemove = mutableListOf<String>()
@@ -76,12 +76,12 @@ class BahanBakuAdapter(private val context: Context, private val list: ArrayList
 
                 if (keysToRemove.isNotEmpty()) {
                     for (key in keysToRemove) {
-                        val itemRef = bahanBakuRef.child(key)
+                        val itemRef = bahanLainnyaRef.child(key)
                         itemRef.removeValue()
                     }
 
                     // Tampilkan Toast saat data dihapus
-                    showToast("Data berhasil dihapus: ${bahanBaku.jenispisang}")
+                    showToast("Data berhasil dihapus: ${bahanLainnyaModel.namabahan}")
                     removeItems(keysToRemove)
                 } else {
                     showToast("Data tidak ditemukan")
@@ -100,7 +100,7 @@ class BahanBakuAdapter(private val context: Context, private val list: ArrayList
     }
 
     private fun removeItems(keys: List<String>) {
-        list.removeAll { bahanBaku -> keys.contains(bahanBaku.id) }
+        list.removeAll { bahanLainnyaModel -> keys.contains(bahanLainnyaModel.id) }
         notifyDataSetChanged()
     }
 

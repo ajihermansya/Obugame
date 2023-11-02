@@ -1,20 +1,18 @@
 package com.rumahproduksi.obugame.menu_fragment
 
-import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.google.android.material.tabs.TabLayoutMediator
 import com.rumahproduksi.obugame.R
-import com.rumahproduksi.obugame.adapter.DetailAdapter
 import com.rumahproduksi.obugame.activity_fragmen.BahanBakuFragment
 import com.rumahproduksi.obugame.activity_fragmen.BahanLainnyaFragment
 import com.rumahproduksi.obugame.activity_fragmen.BiayaLainFragment
+import com.rumahproduksi.obugame.adapter.DetailAdapter
 import com.rumahproduksi.obugame.databinding.FragmentNotedBinding
-import com.rumahproduksi.obugame.page_activity.SettingActivity
 
 class NotedFragment : Fragment() {
     lateinit var binding: FragmentNotedBinding
@@ -44,10 +42,10 @@ class NotedFragment : Fragment() {
             tab.text = titleFragments[posisi]
         }.attach()
 
-        binding.settingApp.setOnClickListener {
-            val intent = Intent(requireContext(), SettingActivity::class.java)
-            startActivity(intent)
-        }
+//        binding.settingApp.setOnClickListener {
+//            val intent = Intent(requireContext(), SettingActivity::class.java)
+//            startActivity(intent)
+//        }
 
         return binding.root
     }

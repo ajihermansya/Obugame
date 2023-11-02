@@ -1,15 +1,15 @@
 package com.rumahproduksi.obugame.page_activity
 
-import androidx.appcompat.app.AppCompatActivity
+import HistoryAdapter
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.rumahproduksi.obugame.adapter.HistoryAdapter
 import com.rumahproduksi.obugame.adapter.dataclass_model.CalculatorModel
 import com.rumahproduksi.obugame.databinding.ActivityHistoryBinding
 
@@ -17,8 +17,6 @@ class HistoryActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHistoryBinding
     private lateinit var database: FirebaseDatabase
     private lateinit var list: ArrayList<CalculatorModel>
-    private var lastItemId: Int = 0
-    private val itemsPerPage = 10
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,6 +54,16 @@ class HistoryActivity : AppCompatActivity() {
                 }
             })
 
+        binding.floatingActionButton.setOnClickListener {
+            val inventoriRef = database.reference.child("hasil_perhitungan")
+            inventoriRef.removeValue()
+                .addOnSuccessListener {
+                    Toast.makeText(this@HistoryActivity, "Semua data inventori telah dihapus", Toast.LENGTH_SHORT).show()
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this@HistoryActivity, "Gagal menghapus data inventori", Toast.LENGTH_SHORT).show()
+                }
+        }
 
 
         binding.iconBack.setOnClickListener {

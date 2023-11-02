@@ -1,6 +1,5 @@
 package com.rumahproduksi.obugame.activity_fragmen
 
-import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
@@ -8,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
@@ -31,7 +29,7 @@ class BahanBakuFragment : Fragment() {
     private lateinit var storage : FirebaseStorage
     private var mStorageRef: StorageReference? = null
     private lateinit var mDbRef: DatabaseReference
-    private lateinit var selectedImg: Uri
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -68,6 +66,7 @@ class BahanBakuFragment : Fragment() {
             })
 
 
+        mDbRef = FirebaseDatabase.getInstance().reference.child("bahan_baku")
         binding.floatingActionButton.setOnClickListener {
             val builder = AlertDialog.Builder(requireContext())
             val inflater = requireActivity().layoutInflater
@@ -76,53 +75,37 @@ class BahanBakuFragment : Fragment() {
             val alertDialog = builder.create()
             alertDialog.show()
 
-            // Peroleh referensi dari elemen-elemen dalam dialogView
-
             val simpanData = dialogView.findViewById<Button>(R.id.simpan_data)
 
             simpanData.setOnClickListener {
-                val inputImage = dialogView.findViewById<ImageView>(R.id.userImage_1)
-                val inputBahanBaku = dialogView.findViewById<EditText>(R.id.input_bahanbaku_1)
-                tambahdata(inputImage, inputBahanBaku)
+                val inputBahanBaku = dialogView.findViewById<EditText>(R.id.input_bahanbaku_1).text.toString()
+                tambahdata(inputBahanBaku)
+                alertDialog.dismiss()
             }
         }
+
         return binding.root
     }
 
-    private fun tambahdata(inputImage: ImageView, inputBahanBaku: EditText) {
-        val imageUri = selectedImg // Ambil URI gambar yang sudah dipilih
+    private fun tambahdata(inputBahanBaku: String) {
+        if (TextUtils.isEmpty(inputBahanBaku)) {
+            Toast.makeText(context, "Isi semua kolom terlebih dahulu.", Toast.LENGTH_SHORT).show()
+            return
+        }
 
-        if (imageUri != null) {
-            val storageRef = mStorageRef?.child("images/${System.currentTimeMillis()}_${imageUri.lastPathSegment}")
+        try {
+            // Menambahkan data ke Firebase Database
+            val newBahanBakuRef = mDbRef.push()
+            val newBahanBaku = BahanBaku(null, inputimage = null, inputBahanBaku) // ID diisi null di sini
+            newBahanBakuRef.setValue(newBahanBaku)
 
-            // Upload gambar ke Firebase Storage
-            storageRef?.putFile(imageUri)
-                ?.addOnSuccessListener { taskSnapshot ->
-                    // Dapatkan URL gambar yang sudah diupload
-                    storageRef.downloadUrl.addOnSuccessListener { uri ->
-                        // Gunakan URI gambar ini untuk menyimpan data ke Firebase Database
-                        val imageUrl = uri.toString()
+            // Setel ID yang dihasilkan oleh push
+            newBahanBaku.id = newBahanBakuRef.key
+            mDbRef.child(newBahanBaku.id!!).setValue(newBahanBaku)
 
-                        if (TextUtils.isEmpty(imageUrl) || TextUtils.isEmpty(inputBahanBaku.text)) {
-                            Toast.makeText(context, "Isi semua kolom terlebih dahulu.", Toast.LENGTH_SHORT).show()
-                        } else {
-                            try {
-                                // Menambahkan data ke Firebase Database
-                                val newBahanBakuRef = mDbRef.push()
-                                newBahanBakuRef.setValue(BahanBaku(imageUrl, inputBahanBaku.text.toString()))
-                                Toast.makeText(context, "Data berhasil ditambahkan ke Firebase", Toast.LENGTH_SHORT).show()
-                            } catch (e: NumberFormatException) {
-                                Toast.makeText(context, "Masukkan berat bahan tidak valid. Harap masukkan angka yang benar.", Toast.LENGTH_SHORT).show()
-                            }
-                        }
-                    }
-                }
-                ?.addOnFailureListener { exception ->
-                    // Jika upload gagal
-                    Toast.makeText(context, "Upload gambar gagal: $exception", Toast.LENGTH_SHORT).show()
-                }
-        } else {
-            Toast.makeText(context, "Pilih gambar terlebih dahulu.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Data berhasil ditambahkan ke Firebase", Toast.LENGTH_SHORT).show()
+        } catch (e: NumberFormatException) {
+            Toast.makeText(context, "Masukkan berat bahan tidak valid. Harap masukkan angka yang benar.", Toast.LENGTH_SHORT).show()
         }
     }
 

@@ -1,9 +1,9 @@
 package com.rumahproduksi.obugame.page_activity
-import android.app.ActivityOptions
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.rumahproduksi.obugame.R
@@ -37,7 +37,14 @@ class HomePageActivity : AppCompatActivity() {
                     true
                 }
                 R.id.profile -> {
-                    Toast.makeText(this, "Ini adalah halaman profil.", Toast.LENGTH_SHORT).show()
+                    val alertDialogBuilder = AlertDialog.Builder(this)
+                    alertDialogBuilder.setTitle("Halaman Profil")
+                    alertDialogBuilder.setMessage("Maaf Halaman Ini Dalam Sedang Perbaikan")
+                    alertDialogBuilder.setPositiveButton("Tutup") { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    val alertDialog = alertDialogBuilder.create()
+                    alertDialog.show()
                     true
                 }
                 else -> {

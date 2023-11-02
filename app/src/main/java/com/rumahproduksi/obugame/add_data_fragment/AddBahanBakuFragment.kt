@@ -2,15 +2,15 @@ package com.rumahproduksi.obugame.add_data_fragment
 
 import android.os.Bundle
 import android.text.TextUtils
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.rumahproduksi.obugame.databinding.FragmentAddBahanBakuBinding
 import com.rumahproduksi.obugame.adapter.dataclass_model.BahanBaku
+import com.rumahproduksi.obugame.databinding.FragmentAddBahanBakuBinding
 
 class AddBahanBakuFragment : Fragment() {
     lateinit var binding: FragmentAddBahanBakuBinding
@@ -25,27 +25,22 @@ class AddBahanBakuFragment : Fragment() {
 
         binding.buttonSave.setOnClickListener {
             val jenispisang = binding.jenisPisang.text.toString()
-            val beratBahan = binding.inputBahanbaku.text.toString()
-            tambahdata(jenispisang, beratBahan)
+            tambahdata(jenispisang)
         }
 
         return binding.root
     }
 
-    private fun tambahdata(jenispisang: String, beratBahan: String) {
-        if (TextUtils.isEmpty(jenispisang) || TextUtils.isEmpty(beratBahan)) {
+    private fun tambahdata(jenispisang: String) {
+        if (TextUtils.isEmpty(jenispisang)) {
             Toast.makeText(context, "Isi semua kolom terlebih dahulu.", Toast.LENGTH_SHORT).show()
             return
         }
 
         try {
-            // Menambahkan data ke Firebase
-            val newBahanBaku = BahanBaku(null, inputimage = null, jenispisang, beratBahan) // ID diisi null di sini
-
+            val newBahanBaku = BahanBaku(null, inputimage = null, jenispisang) // ID diisi null di sini
             val newBahanBakuRef = mDbRef.push()
             newBahanBakuRef.setValue(newBahanBaku)
-
-            // Mengambil ID yang baru dibuat dan mengupdate ID di dalam objek BahanBaku
             newBahanBaku.id = newBahanBakuRef.key
             mDbRef.child(newBahanBaku.id!!).setValue(newBahanBaku)
 

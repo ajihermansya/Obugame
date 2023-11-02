@@ -1,4 +1,4 @@
-package com.rumahproduksi.obugame.page_activity
+package com.rumahproduksi.obugame.page_activity.inventory_activity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -12,7 +12,6 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.rumahproduksi.obugame.R
-import com.rumahproduksi.obugame.adapter.DetailAdapter
 import com.rumahproduksi.obugame.adapter.InventoryAdapter
 import com.rumahproduksi.obugame.adapter.dataclass_model.BahanBaku
 import com.rumahproduksi.obugame.adapter.dataclass_model.InventoriModel
@@ -28,7 +27,6 @@ class InventoriActivity : AppCompatActivity() {
     private lateinit var mDbRefs: DatabaseReference
     private lateinit var adapters: InventoryAdapter
     private lateinit var mDbRef: DatabaseReference
-    lateinit var adapter: DetailAdapter
     private var activeID: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {

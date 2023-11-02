@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rumahproduksi.obugame.R
 import com.rumahproduksi.obugame.adapter.dataclass_model.BahanBaku
 import com.rumahproduksi.obugame.databinding.ActivityInventoriBinding
-import com.rumahproduksi.obugame.page_activity.InventoriActivity
+import com.rumahproduksi.obugame.page_activity.inventory_activity.InventoriActivity
 
 class DetailInventoryAdapter(private val context: Context, private val list: ArrayList<BahanBaku>)
     : RecyclerView.Adapter<DetailInventoryAdapter.RiwayatViewHolder>() {
