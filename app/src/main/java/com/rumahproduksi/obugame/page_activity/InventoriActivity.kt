@@ -1,14 +1,17 @@
 package com.rumahproduksi.obugame.page_activity
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.rumahproduksi.obugame.R
 import com.rumahproduksi.obugame.adapter.DetailAdapter
 import com.rumahproduksi.obugame.adapter.InventoryAdapter
 import com.rumahproduksi.obugame.adapter.dataclass_model.BahanBaku
@@ -100,7 +103,6 @@ class InventoriActivity : AppCompatActivity() {
 
 
 
-
         binding.ProduksiBtn.setOnClickListener {
             if (binding.inputJumlahProduksi.text.isEmpty()) {
                 Toast.makeText(this, "Inputkan angka yang sesuai", Toast.LENGTH_SHORT).show()
@@ -118,23 +120,110 @@ class InventoriActivity : AppCompatActivity() {
                 inventoriRef.orderByKey().limitToLast(1).addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         val lastInventori = snapshot.children.firstOrNull()
-                        var newId = 1
-
-                        if (lastInventori != null) {
+                        val newId = if (lastInventori != null) {
                             // Jika ada data inventori sebelumnya, hitung ID yang baru
                             val lastInventoriId = lastInventori.key?.toInt()
-                            newId = (lastInventoriId ?: 0) + 1
+                            (lastInventoriId ?: 0) + 1
+                        } else {
+                            1
                         }
 
                         val inventoriId = newId.toString()
+                        var stokTerbaru = jumlah.toInt()
+
+                        if (lastInventori != null) {
+                            val lastStok = lastInventori.child("stok").getValue(String::class.java)
+                            val lastStokInt = lastStok?.toIntOrNull() ?: 0  // Mengubah stok sebelumnya menjadi 0 jika null
+
+                            stokTerbaru -= lastStokInt
+
+
+                            val stokStr = if (stokTerbaru <= 0) {
+
+                                "${Math.abs(stokTerbaru)}"
+                            } else {
+
+                                "-${Math.abs(stokTerbaru)}"
+                            }
+
+
+                            val produksi = InventoriModel(
+                                inventoriId = inventoriId,
+                                tanggal = tanggal,
+                                jenisTindakan = "Produksi",
+                                jumlah = jumlah,
+                                stok = stokStr
+                            )
+
+
+                            val produksiReference = inventoriRef.child(inventoriId)
+                            produksiReference.setValue(produksi)
+                                .addOnSuccessListener {
+                                    binding.inputJumlahProduksi.text.clear()
+                                    Toast.makeText(this@InventoriActivity, "Data Tersimpan", Toast.LENGTH_SHORT).show()
+
+                                    binding.root.findViewById<TextView>(R.id.jumlah_coloum)
+                                        .setTextColor(ContextCompat.getColor(this@InventoriActivity, R.color.red))
+                                    binding.root.findViewById<TextView>(R.id.jenis_coloum)
+                                        .setTextColor(ContextCompat.getColor(this@InventoriActivity, R.color.red))
+                                }
+                                .addOnFailureListener {
+                                    Toast.makeText(this@InventoriActivity, "Data Tidak Tersimpan", Toast.LENGTH_SHORT).show()
+                                }
+                        }
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        Toast.makeText(this@InventoriActivity, "Gagal mengakses data inventori", Toast.LENGTH_SHORT).show()
+                    }
+                })
+            }
+        }
+
+
+
+
+        binding.PembelianBtn.setOnClickListener {
+            if (binding.inputJumlahProduksi.text.isEmpty()) {
+                Toast.makeText(this, "Inputkan angka yang sesuai", Toast.LENGTH_SHORT).show()
+            } else {
+                val jumlah = binding.inputJumlahProduksi.text.toString()
+                val sdf = SimpleDateFormat("dd-MM-yyyy")
+                val tanggal1 = Date()
+                val tanggal = sdf.format(tanggal1)
+
+                val inventoriRef = database.reference.child("bahan_baku")
+                    .child(activeID)
+                    .child("inventori")
+
+                // Dapatkan data inventori terakhir
+                inventoriRef.orderByKey().limitToLast(1).addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        val lastInventori = snapshot.children.firstOrNull()
+                        val newId = if (lastInventori != null) {
+                            // Jika ada data inventori sebelumnya, hitung ID yang baru
+                            val lastInventoriId = lastInventori.key?.toInt()
+                            (lastInventoriId ?: 0) + 1
+                        } else {
+                            1
+                        }
+
+                        val inventoriId = newId.toString()
+                        var stokTerbaru = jumlah.toInt()
+
+                        // Jika ada data inventori sebelumnya, tambahkan jumlah dengan stok terakhir
+                        if (lastInventori != null) {
+                            val lastStok = lastInventori.child("stok").getValue(String::class.java)
+                            stokTerbaru += lastStok?.toInt() ?: 0
+                        }
 
                         // Membuat objek data inventori
                         val produksi = InventoriModel(
                             inventoriId = inventoriId,
                             tanggal = tanggal,
-                            jenisTindakan = "Produksi",
+                            jenisTindakan = "Pembelian",
                             jumlah = jumlah,
-                            stok = null
+                            stok = stokTerbaru.toString()
                         )
 
                         // Mengirim data ke Firebase dengan menggunakan ID inventori yang telah dihitung
@@ -143,6 +232,12 @@ class InventoriActivity : AppCompatActivity() {
                             .addOnSuccessListener {
                                 binding.inputJumlahProduksi.text.clear()
                                 Toast.makeText(this@InventoriActivity, "Data Tersimpan", Toast.LENGTH_SHORT).show()
+
+                                // Mengubah warna teks menjadi hijau
+                                binding.root.findViewById<TextView>(R.id.jumlah_coloum)
+                                    .setTextColor(ContextCompat.getColor(this@InventoriActivity, R.color.green))
+                                binding.root.findViewById<TextView>(R.id.jenis_coloum)
+                                    .setTextColor(ContextCompat.getColor(this@InventoriActivity, R.color.green))
                             }
                             .addOnFailureListener {
                                 Toast.makeText(this@InventoriActivity, "Data Tidak Tersimpan", Toast.LENGTH_SHORT).show()

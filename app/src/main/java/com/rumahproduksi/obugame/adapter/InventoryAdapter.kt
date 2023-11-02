@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -38,6 +39,33 @@ class InventoryAdapter(private val context: Context?, private val list: ArrayLis
         holder.binding.tanggalColoum.text = inventoriModel.tanggal
         holder.binding.jenisColoum.text = inventoriModel.jenisTindakan
         holder.binding.jumlahColoum.text = inventoriModel.jumlah
+        holder.binding.stokColoum.text = inventoriModel.stok
+
+
+        val iconPlus = "+"
+        val iconMinus = "-"
+
+        holder.binding.jumlahColoum.text = when (inventoriModel.jenisTindakan) {
+            "Produksi" -> {
+                holder.binding.jumlahColoum.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.red))
+                // Gunakan ikon minus jika jumlah negatif
+                if (inventoriModel.jumlah?.toInt()!! < 0) {
+                    "$iconMinus ${inventoriModel.jumlah}"
+                } else {
+                    "$iconMinus ${inventoriModel.jumlah}"
+                }
+            }
+            "Pembelian" -> {
+                holder.binding.jumlahColoum.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.green))
+                // Gunakan ikon plus
+                "$iconPlus ${inventoriModel.jumlah}"
+            }
+            else -> {
+                holder.binding.jumlahColoum.setBackgroundResource(R.drawable.brown_border)
+                inventoriModel.jumlah
+            }
+        }
+
 
 
         holder.itemView.setOnClickListener {
