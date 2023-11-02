@@ -57,25 +57,11 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/jumlah_stok"
+                            android:layout_marginTop="6dp"
+                            android:text="Tab untuk melihat detailnya"
                             android:textColor="@color/black"
                             android:textSize="15sp" />
 
-                        <TextView
-                            android:id="@+id/value_nilai"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/value_tandan"
-                            android:textColor="@color/black"
-                            android:textSize="15sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:text="@string/tandan"
-                            android:textColor="@color/black"
-                            android:textSize="15sp" />
 
                     </LinearLayout>
                 </LinearLayout>

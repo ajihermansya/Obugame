@@ -55,15 +55,21 @@ class InventoriActivity : AppCompatActivity() {
         mDbRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 list.clear()
+                var lastStok: String? = null
                 for (snapshot1 in snapshot.children) {
                     val data = snapshot1.getValue(BahanBaku::class.java)
                     if (data?.id == activeID) {
                         list.add(data!!)
-                        // Update tampilan dengan data yang sesuai
+
                         binding.userName.text = data?.jenispisang
-                        // Anda dapat menambahkan perbarui elemen-elemen tampilan lainnya di sini
+
+                        val inventoriRef = snapshot1.child("inventori")
+                        val lastInventori = inventoriRef.children.lastOrNull()
+                        lastStok = lastInventori?.child("stok")?.getValue(String::class.java)
+
                     }
                 }
+                binding.valueNilai.text = lastStok ?: "null"
                 binding.progressBar.visibility = View.GONE
             }
 

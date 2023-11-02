@@ -56,9 +56,6 @@ class BahanBakuFragment : Fragment() {
                         val data = snapshot1.getValue(BahanBaku::class.java)
                         list.add(data!!)
                     }
-//                    if (adapter != null) {
-//                        adapter.sortDataByDescending()
-//                    }
                     binding.recyclerView.adapter = adapter
                     binding.progressBar.visibility = View.GONE
                 }
